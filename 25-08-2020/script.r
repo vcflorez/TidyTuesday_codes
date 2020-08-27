@@ -21,6 +21,7 @@ dessert <- as.data.frame(dessert)
 
 
 
+
 ##### Función donut plot #####
 donutplot_ing <-  function(food_data_frame){
   app_data <- as.data.frame(table(food_data_frame))
@@ -34,9 +35,9 @@ donutplot_ing <-  function(food_data_frame){
   
 fills <- c("#9A470E","#A96C3D","#256666","#2F8832","#EAB200","#C00000")
 cols <- c("#734835","#965F36","#1F5857","#28722A","#BF9000","#9E0000")
-
+random <- sample(6)
 p <- ggplot(app_data, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=2.5)) +
-    geom_rect(color=cols, fill=fills) + 
+    geom_rect(color=cols[random], fill=fills[random]) + 
     coord_polar(theta="y") +
     xlim(c(-1, 4)) +
     theme_void() +
