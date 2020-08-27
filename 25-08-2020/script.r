@@ -1,4 +1,4 @@
-#setwd("G:/Mi unidad/Semestre VIII/Analytics Research Lab II/Tidytuesday")
+setwd("G:/Mi unidad/Semestre VIII/Analytics Research Lab II/Tidytuesday")
 
 ##### Paquetes y datos #####
 library(tidyverse)
@@ -23,7 +23,6 @@ dessert <- as.data.frame(dessert)
 
 ##### Función donut plot #####
 donutplot_ing <-  function(food_data_frame){
-  
   app_data <- as.data.frame(table(food_data_frame))
   app_data <- arrange(app_data,-Freq)[1:6,]
   colnames(app_data) <- c("ingredient", "count") 
@@ -42,6 +41,7 @@ p <- ggplot(app_data, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=2.5)) +
     xlim(c(-1, 4)) +
     theme_void() +
     theme(legend.position = "none")
+
 return(p)
 }
 
@@ -54,11 +54,12 @@ des_plot <- donutplot_ing(dessert)
 
 
 wallpaper <- png::readPNG("background2.png") #Fondo previamente diseñado
+
 plot <- ggdraw()+ 
   background_image(wallpaper)+
   draw_plot(app_plot, x = 0.15, y = 0.243, width = 0.220, height = 0.220) + #1
   draw_plot(ent_plot, x = 0.380, y =0.705, width = 0.220, height = 0.220) + #2
-  draw_plot(des_plot, x = 0.622, y = 0.240, width = 0.220, height = 0.220)  #3
+  draw_plot(des_plot, x = 0.622, y = 0.240, width = 0.220, height = 0.220) #3
 
 
 ##### Exportación #####
